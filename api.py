@@ -15,7 +15,9 @@ logging.basicConfig(filename="logs.txt",
                     level=logging.INFO)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("cookies_U", help="The cookie for authentication.")
+parser.add_argument("--host", default="0.0.0.0", help="Host to run the server on")
+parser.add_argument("--port", type=int, default=7777, help="Port to run the server on")
+parser.add_argument("--cookies_U", help="The cookie for authentication.")
 args = parser.parse_args()
 
 logging.info(args.cookies_U)
@@ -79,4 +81,4 @@ async def chatgpt_reply(request: Request):
 if __name__ == '__main__':
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, workers=args.cookies_U)
+    uvicorn.run("main:app", host="0.0.0.0", port=7777, workers=args.cookies_U)
